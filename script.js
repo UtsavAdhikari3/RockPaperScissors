@@ -5,7 +5,6 @@ let computerScore = 0;
 function getComputerChoice(){
     let str = ["rock", "paper", "scissors"];
     let a =  Math.floor(Math.random() * 3);
-    console.log(str[a])
     return str[a];
 }
 
@@ -18,58 +17,48 @@ function getHumanChoice(){
 }
 
 function playRound(humanChoice,computerChoice){
+    const result = document.querySelector(".result");
     if(humanChoice === "rock" && computerChoice === "rock"){
-        console.log("The score of computer is " + computerScore);
-        console.log("The score of human is " + humanScore);
+        result.textContent = `the score of human is ${humanScore} and the score of computer is ${computerScore}`
     }
     else if(humanChoice === "rock" && computerChoice === "paper"){
         computerScore = computerScore + 1;
-        console.log("The score of computer is " + computerScore);
-        console.log("The score of human is " + humanScore);
+        result.textContent = `the score of human is ${humanScore} and the score of computer is ${computerScore}`
     }
     else if(humanChoice === "rock" && computerChoice === "scissors"){
         humanScore = humanScore + 1;
-        console.log("The score of computer is " + computerScore);
-        console.log("The score of human is " + humanScore);
+        result.textContent = `the score of human is ${humanScore} and the score of computer is ${computerScore}`
     }
     else if(humanChoice === "paper" && computerChoice === "paper"){
-        console.log("The score of computer is " + computerScore);
-        console.log("The score of human is " + humanScore);
+        result.textContent = `the score of human is ${humanScore} and the score of computer is ${computerScore}`
     }
     else if(humanChoice === "paper" && computerChoice === "rock"){
         humanScore = humanScore + 1;
-        console.log("The score of computer is " + computerScore);
-        console.log("The score of human is " + humanScore);
+        result.textContent = `the score of human is ${humanScore} and the score of computer is ${computerScore}`
     }
     else if(humanChoice === "paper" && computerChoice === "scissors"){
         computerScore = computerScore + 1;
-        console.log("The score of computer is " + computerScore);
-        console.log("The score of human is " + humanScore);
+        result.textContent = `the score of human is ${humanScore} and the score of computer is ${computerScore}`
     }
     else if(humanChoice === "scissors" && computerChoice === "scissors"){
-        console.log("The score of computer is " + computerScore);
-        console.log("The score of human is " + humanScore);
+        result.textContent = `the score of human is ${humanScore} and the score of computer is ${computerScore}`
     }
     else if(humanChoice === "scissors" && computerChoice === "rock"){
         computerScore = computerScore + 1;
-        console.log("The score of computer is " + computerScore);
-        console.log("The score of human is " + humanScore);
+        result.textContent = `the score of human is ${humanScore} and the score of computer is ${computerScore}`
     }
     else if(humanChoice === "scissors" && computerChoice === "paper"){
         humanScore = humanScore + 1;
-        console.log("The score of computer is " + computerScore);
-        console.log("The score of human is " + humanScore);
+        result.textContent = `the score of human is ${humanScore} and the score of computer is ${computerScore}`
     }
     
     else if(humanChoice === "paper" && computerChoice === "rock"){
         humanScore = humanScore + 1;
-        console.log("The score of computer is " + computerScore);
-        console.log("The score of human is " + humanScore);
+        result.textContent = `the score of human is ${humanScore} and the score of computer is ${computerScore}`
     }
     else if(humanChoice === "paper" && computerChoice === "scissors"){
         computerScore = computerScore + 1;
-        console.log("The score of computer is " + computerScore);
-        console.log("The score of human is " + humanScore);
+        result.textContent = `the score of human is ${humanScore} and the score of computer is ${computerScore}`    
     }
     
 }
@@ -90,16 +79,17 @@ buttonDiv.appendChild(buttonScissors);
 
 buttonDiv.addEventListener("click",(event)=>{
     let target = event.target;
-    console.log(target.textContent)
-    playRound(target.textContent,getComputerChoice())
-    if(computerScore > 2 || humanScore > 2){
-            if(humanScore > computerScore){
-                console.log("Human Wins The round");
-            }
-            else if(humanScore < computerScore){
-                console.log("Computer wins the round")
-            }
+    const announceResults = document.querySelector(".announceResults");
+    if(humanScore < 5 && computerScore < 5){
+        playRound(target.textContent,getComputerChoice());
+        if(humanScore === 5 || computerScore === 5)
+        if(humanScore > computerScore){
+            announceResults.textContent = "Human wins the round";
         }
+        else if(humanScore < computerScore){
+            announceResults.textContent = "Computer wins the round";
+        }
+    }
     }
 )
 
