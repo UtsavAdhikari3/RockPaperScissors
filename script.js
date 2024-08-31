@@ -63,19 +63,32 @@ function playRound(humanChoice,computerChoice){
     
 }
 
+const buttonRock = document.createElement("button");
+const buttonPaper = document.createElement("button");
+const buttonScissors = document.createElement("button");
+
+buttonRock.textContent = "Rock";
+buttonPaper.textContent = "Paper";
+buttonScissors.textContent = "Scissors";
+
+const buttonDiv = document.querySelector(".buttons");
+buttonDiv.appendChild(buttonRock);
+buttonDiv.appendChild(buttonPaper);
+buttonDiv.appendChild(buttonScissors);
+
 function playGame(){
-    for(let i = 0; i<=10; i++){
-        playRound(getHumanChoice(),getComputerChoice())
-        if(computerScore > 2 || humanScore > 2){
-                if(humanScore > computerScore){
-                    console.log("Human Wins The round");
-                }
-                else if(humanScore < computerScore){
-                    console.log("Computer wins the round")
-                }
-                break;
-            }
-        }
+    // for(let i = 0; i<=10; i++){
+    //     playRound(getHumanChoice(),getComputerChoice())
+    //     if(computerScore > 2 || humanScore > 2){
+    //             if(humanScore > computerScore){
+    //                 console.log("Human Wins The round");
+    //             }
+    //             else if(humanScore < computerScore){
+    //                 console.log("Computer wins the round")
+    //             }
+    //             break;
+    //         }
+    //     }
     };
 
 
