@@ -50,6 +50,17 @@ function playRound(humanChoice,computerChoice){
         console.log("The score of computer is " + computerScore);
         console.log("The score of human is " + humanScore);
     }
+    else if(humanChoice === "scissors" && computerChoice === "rock"){
+        computerScore = computerScore + 1;
+        console.log("The score of computer is " + computerScore);
+        console.log("The score of human is " + humanScore);
+    }
+    else if(humanChoice === "scissors" && computerChoice === "paper"){
+        humanScore = humanScore + 1;
+        console.log("The score of computer is " + computerScore);
+        console.log("The score of human is " + humanScore);
+    }
+    
     else if(humanChoice === "paper" && computerChoice === "rock"){
         humanScore = humanScore + 1;
         console.log("The score of computer is " + computerScore);
@@ -67,14 +78,30 @@ const buttonRock = document.createElement("button");
 const buttonPaper = document.createElement("button");
 const buttonScissors = document.createElement("button");
 
-buttonRock.textContent = "Rock";
-buttonPaper.textContent = "Paper";
-buttonScissors.textContent = "Scissors";
+buttonRock.textContent = "rock";
+buttonPaper.textContent = "paper";
+buttonScissors.textContent = "scissors";
 
 const buttonDiv = document.querySelector(".buttons");
 buttonDiv.appendChild(buttonRock);
 buttonDiv.appendChild(buttonPaper);
 buttonDiv.appendChild(buttonScissors);
+
+
+buttonDiv.addEventListener("click",(event)=>{
+    let target = event.target;
+    console.log(target.textContent)
+    playRound(target.textContent,getComputerChoice())
+    if(computerScore > 2 || humanScore > 2){
+            if(humanScore > computerScore){
+                console.log("Human Wins The round");
+            }
+            else if(humanScore < computerScore){
+                console.log("Computer wins the round")
+            }
+        }
+    }
+)
 
 function playGame(){
     // for(let i = 0; i<=10; i++){
